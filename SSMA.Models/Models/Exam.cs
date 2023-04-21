@@ -11,5 +11,6 @@ namespace SSMA.Models.Models
     {
         public int Score { get; set; }
         public DateTime DateOfExam { get; set; }
+
     }
 }
