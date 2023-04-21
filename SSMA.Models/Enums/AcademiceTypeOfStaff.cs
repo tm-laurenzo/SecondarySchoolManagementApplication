@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SSMA.Models.Models
+namespace SSMA.Models.Enums
 {
-    public class Test
+    internal class AcademiceTypeOfStaff
     {
-        public int Score { get; set; }
-        public DateTime Date { get; set; }
     }
 }
