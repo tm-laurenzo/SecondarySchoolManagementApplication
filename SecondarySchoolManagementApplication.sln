@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondarySchoolManagementApplication", "SecondarySchoolManagementApplication\SecondarySchoolManagementApplication.csproj", "{4007A9C8-E0E6-4CE2-8EB8-8C5095223949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSMA.Models", "SSMA.Models\SSMA.Models.csproj", "{EAE51989-37FE-4A8D-82FB-51AF17C2DA0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4007A9C8-E0E6-4CE2-8EB8-8C5095223949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4007A9C8-E0E6-4CE2-8EB8-8C5095223949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4007A9C8-E0E6-4CE2-8EB8-8C5095223949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4007A9C8-E0E6-4CE2-8EB8-8C5095223949}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE51989-37FE-4A8D-82FB-51AF17C2DA0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE51989-37FE-4A8D-82FB-51AF17C2DA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE51989-37FE-4A8D-82FB-51AF17C2DA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE51989-37FE-4A8D-82FB-51AF17C2DA0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82C20B05-A67F-4964-9975-30D5486F8215}
+	EndGlobalSection
+EndGlobal
