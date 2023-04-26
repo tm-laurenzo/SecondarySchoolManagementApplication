@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Enums
 {
-    internal class ManagerialTypeOfStaff
+    public enum ManagerialTypeOfStaff
     {
+        Managerial,
+        NonManagerial
     }
 }

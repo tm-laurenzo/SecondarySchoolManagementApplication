@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SSMA.Models.Enums
+namespace SSMA.Data.Context
 {
-    public enum VicePrincipalType
+    internal class SsmaDbContext
     {
-        Administration,
-        Welfare,
-        Academics
     }
 }

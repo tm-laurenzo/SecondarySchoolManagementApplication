@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Enums
 {
-    internal class AcademiceTypeOfStaff
+    public enum AcademiceTypeOfStaff
     {
+        Academic,
+        NonAcademic
     }
 }
