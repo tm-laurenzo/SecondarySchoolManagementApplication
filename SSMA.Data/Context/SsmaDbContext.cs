@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSMA.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Data.Context
 {
-    internal class SsmaDbContext
+    internal class SsmaDbContext : IdentiyDbContext<AppUser>
     {
     }
 }

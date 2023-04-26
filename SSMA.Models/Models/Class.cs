@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public class Student: AppUser
+    internal class Class
     {
-        public Class Class { get; set; }
-        public List<Subject> Subjects { get; set; }
     }
 }

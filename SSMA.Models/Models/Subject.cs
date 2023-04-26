@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public class Subject
+    public class Subject: SubjectName
     {
-        public string Name { get; set; }
         public Exam Exam { get; set; }
         public List<Test> Tests { get; set; }
         public List<Assignment> Assignments { get; set; }
