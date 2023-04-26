@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    internal class Class
+    public class Class
     {
+        public int MyProperty { get; set; }
     }
 }

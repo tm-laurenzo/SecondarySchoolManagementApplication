@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Enums
 {
-    public enum Level
+    public enum ClassLevel
     {
         JSS1,
         JSS2,

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Enums
 {
-    internal class ClassColour
+    public enum ClassColour
     {
+        Yellow,
+        Blue,
+        Green,
+        Pink, 
+        Maroon
     }
 }
