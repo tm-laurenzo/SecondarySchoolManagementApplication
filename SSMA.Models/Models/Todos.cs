@@ -8,6 +8,7 @@ namespace SSMA.Models.Models
 {
     public class Todos
     {
-        //Todo: Accounts
+        //Todo: Accounts for financial transaction, part of the microservice
+        //Non-teaching staff should be in their own microservice
     }
 }
