@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SSMA.Models\SSMA.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UnitOfWork\" />
+    <Folder Include="Seeder\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
