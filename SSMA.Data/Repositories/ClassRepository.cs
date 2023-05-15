@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Data.Repositories
 {
-    internal class ClassRepository
+    public class ClassRepository
     {
     }
 }
