@@ -1,10 +1,6 @@
-﻿
-using League_Management_Data.Context;
-using League_Management_Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Identity;
 
-namespace League_Management_Application.Extensions
+namespace SecondarySchoolManagementApplication.Extensions
 {
     public static class IdentityServiceExtension
     {

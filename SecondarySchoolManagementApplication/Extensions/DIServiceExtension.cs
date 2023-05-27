@@ -3,7 +3,7 @@
 using Microsoft.Extensions.DependencyInjection;
 
 
-namespace League_Management_Application.Extensions
+namespace SecondarySchoolManagementApplication.Extensions
 {
     public static class DIServiceExtension
     {

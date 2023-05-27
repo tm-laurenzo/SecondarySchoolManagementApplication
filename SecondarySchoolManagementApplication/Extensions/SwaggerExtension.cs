@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using System;
 
-namespace League_Management_Application.Extensions
+namespace SecondarySchoolManagementApplication.Extensions
 {
     public static class SwaggerExtension
     {
