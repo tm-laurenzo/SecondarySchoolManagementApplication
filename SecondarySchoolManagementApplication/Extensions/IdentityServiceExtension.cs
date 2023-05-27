@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using SSMA.Data.Context;
+using SSMA.Models.Models;
 
 namespace SecondarySchoolManagementApplication.Extensions
 {
@@ -6,7 +8,7 @@ namespace SecondarySchoolManagementApplication.Extensions
     {
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            var builder = services.AddIdentity<User, IdentityRole>(options =>
+            var builder = services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireDigit = true;
@@ -16,7 +18,7 @@ namespace SecondarySchoolManagementApplication.Extensions
                 options.SignIn.RequireConfirmedEmail = true;
             });
             builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), services);
-            builder.AddEntityFrameworkStores<LMADbContext>()
+            builder.AddEntityFrameworkStores<SsmaDbContext>()
                 .AddDefaultTokenProviders();
         }
     }
