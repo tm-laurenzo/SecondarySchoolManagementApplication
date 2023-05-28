@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SSMA.Data.Repositories
+namespace SSMA.Data.Repositories.Implementations
 {
-    public class VicePrincipalRepository
+    public class PrincipalRepository
     {
     }
 }
