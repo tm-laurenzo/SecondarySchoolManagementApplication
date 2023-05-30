@@ -2,6 +2,8 @@
 using hotel_booking_data.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SSMA.Data.Context;
+using SSMA.Data.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +15,11 @@ namespace SSMA.Data.Repositories.Implementations
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly HbaDbContext _context;
+        private readonly SsmaDbContext _context;
         private readonly DbSet<T> _dbSet;
 
 
-        public GenericRepository(HbaDbContext context)
+        public GenericRepository(SsmaDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
