@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSMA.Models", "SSMA.Models\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSMA.Data", "SSMA.Data\SSMA.Data.csproj", "{9E61BD78-1B48-4790-A24C-89C2E6A4EFD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSMA.Core", "SSMA.Core\SSMA.Core.csproj", "{86F458AD-FAF6-4665-A0D7-125E89370BB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSMA.Core", "SSMA.Core\SSMA.Core.csproj", "{86F458AD-FAF6-4665-A0D7-125E89370BB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSMA.DTOs", "SSMA.DTOs\SSMA.DTOs.csproj", "{E44DFE19-DEF4-4AF6-BA8E-76D3296DA579}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{86F458AD-FAF6-4665-A0D7-125E89370BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86F458AD-FAF6-4665-A0D7-125E89370BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F458AD-FAF6-4665-A0D7-125E89370BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E44DFE19-DEF4-4AF6-BA8E-76D3296DA579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E44DFE19-DEF4-4AF6-BA8E-76D3296DA579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E44DFE19-DEF4-4AF6-BA8E-76D3296DA579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E44DFE19-DEF4-4AF6-BA8E-76D3296DA579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
