@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public  class Principal: Staff
+    public class Principal : Staff
     {
-        public ManagerialTypeOfStaff ManagerialTypeOfStaff { get; } = ManagerialTypeOfStaff.Managerial;
-        public AcademiceTypeOfStaff AcademiceTypeOfStaff { get; } = AcademiceTypeOfStaff.Academic;
+        public new ManagerialTypeOfStaff ManagerialTypeOfStaff { get; set; } = ManagerialTypeOfStaff.Managerial;
+        public new AcademiceTypeOfStaff AcademiceTypeOfStaff { get; set; } = AcademiceTypeOfStaff.Academic;
     }
 }

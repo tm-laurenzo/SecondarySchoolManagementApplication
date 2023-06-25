@@ -15,13 +15,16 @@ namespace SSMA.Data.Repositories.Implementations
             _dbSet = _context.Set<Principal>();
         }
 
-        public async Task<Principal> GetPrincipal(string principalId)
+        public async Task<Principal?> GetPrincipalAsync(string principalId)
         {
-
             var principal = await _dbSet.Where(x => x.Id == principalId).FirstOrDefaultAsync();
             return principal;
+        }
 
-
+        public async Task<bool> AddPrincipal(Principal principal)
+        {
+            await _dbSet.AddAsync(principal);
+            return true;
         }
     }
 }
