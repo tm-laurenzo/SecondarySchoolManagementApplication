@@ -1,6 +1,9 @@
-﻿namespace SSMA.Data.UnitOfWork.Abstractions
+﻿using SSMA.Data.Repositories.Abstractions;
+
+namespace SSMA.Data.UnitOfWork.Abstractions
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        IPrincipalRepository Principals { get; }
     }
 }

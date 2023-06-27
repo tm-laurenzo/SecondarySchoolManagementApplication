@@ -10,4 +10,10 @@
     <Folder Include="Abstractions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SSMA.Data\SSMA.Data.csproj" />
+    <ProjectReference Include="..\SSMA.DTOs\SSMA.DTOs.csproj" />
+    <ProjectReference Include="..\SSMA.Models\SSMA.Models.csproj" />
+  </ItemGroup>
+
 </Project>
