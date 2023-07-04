@@ -1,7 +1,9 @@
 using SecondarySchoolManagementApplication.Extensions;
 using static Raven.Client.Constants;
+using SSMA.Utilities.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 var config = builder.Configuration;
 var environment = builder.Environment;
 
