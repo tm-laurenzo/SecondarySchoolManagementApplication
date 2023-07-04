@@ -2,6 +2,8 @@
 using Raven.Client.Documents;
 using Serilog;
 using Serilog.Events;
+using SSMA.Utilities.Abstractions;
+using SSMA.Utilities.Implementations;
 using System.Security.Cryptography.X509Certificates;
 
 namespace SecondarySchoolManagementApplication.Extensions
@@ -31,5 +33,8 @@ namespace SecondarySchoolManagementApplication.Extensions
                 .WriteTo.RavenDB(ravenStore)
                 .CreateLogger();
         }
+
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+             services.AddSingleton<ILoggerManager, LoggerManager>();
     }
 }
