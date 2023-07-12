@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public class SubjectName: BaseGuidEntity
+    public class SubjectName : BaseGuidEntity
     {
         public string Name { get; set; }
         public Department Department { get; set; }

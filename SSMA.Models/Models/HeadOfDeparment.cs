@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public class HeadOfDeparment:Staff
+    public class HeadOfDeparment : Staff
     {
         public ManagerialTypeOfStaff ManagerialTypeOfStaff { get; } = ManagerialTypeOfStaff.Managerial;
         public AcademiceTypeOfStaff AcademiceTypeOfStaff { get; } = AcademiceTypeOfStaff.Academic;

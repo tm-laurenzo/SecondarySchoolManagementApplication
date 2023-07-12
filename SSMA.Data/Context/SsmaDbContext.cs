@@ -28,7 +28,7 @@ namespace SSMA.Data.Context
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<VicePrincipal> VicePrincipals { get; set; }
-        
+
 
 
     }

@@ -11,7 +11,7 @@ namespace SSMA.Models.Enums
         Yellow,
         Blue,
         Green,
-        Pink, 
+        Pink,
         Maroon
     }
 }

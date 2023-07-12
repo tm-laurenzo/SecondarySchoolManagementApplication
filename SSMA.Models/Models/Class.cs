@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public class Class: BaseGuidEntity
+    public class Class : BaseGuidEntity
     {
         public ClassColour Colour { get; set; }
         public ClassColour Level { get; set; }
