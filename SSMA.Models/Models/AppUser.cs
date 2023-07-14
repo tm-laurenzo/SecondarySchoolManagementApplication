@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SSMA.Models.Base;
 
 namespace SSMA.Models.Models
 {
