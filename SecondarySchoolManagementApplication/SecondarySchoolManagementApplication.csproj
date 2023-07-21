@@ -30,6 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\SSMA.Core\SSMA.Core.csproj" />
 		<ProjectReference Include="..\SSMA.Data\SSMA.Data.csproj" />
 		<ProjectReference Include="..\SSMA.Utilities\SSMA.Utilities.csproj" />
 	</ItemGroup>

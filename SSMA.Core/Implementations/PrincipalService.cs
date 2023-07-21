@@ -34,7 +34,7 @@ namespace SSMA.Core.Implementations
             principal.AppUserId = appUser.Id;
             appUser.Principal = principal;
             appUser.IsActive = true;
-
+            appUser.EmailConfirmed = true;
 
             var response = new Response<bool>()
             {
