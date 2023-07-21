@@ -2,7 +2,7 @@ using SecondarySchoolManagementApplication.Extensions;
 using static Raven.Client.Constants;
 using SSMA.Utilities.Implementations;
 using NLog;
-
+using SSMA.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
@@ -13,6 +13,7 @@ var environment = builder.Environment;
 builder.Services.ConfigureLoggerService();
 builder.Services.AddDbContextAndConfigurations(environment, config);
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MappingsProfile).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

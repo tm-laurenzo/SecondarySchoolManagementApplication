@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using SSMA.Core.Abstractions;
 using SSMA.Data.UnitOfWork.Abstractions;
 using SSMA.Models.Models;
