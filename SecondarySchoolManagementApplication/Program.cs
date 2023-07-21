@@ -1,7 +1,5 @@
-using SecondarySchoolManagementApplication.Extensions;
-using static Raven.Client.Constants;
-using SSMA.Utilities.Implementations;
 using NLog;
+using SecondarySchoolManagementApplication.Extensions;
 using SSMA.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);

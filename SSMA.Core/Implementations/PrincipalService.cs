@@ -23,20 +23,25 @@ namespace SSMA.Core.Implementations
             _userManager = userManager;
             _logger = logger;
         }
+
+
         //There can only be one principal at any given time in a school
         public async Task<Response<bool>> AddPrincipal(AddPrincipalDTO addPrincipalDTO)
         {
 
             var appUser = _mapper.Map<AppUser>(addPrincipalDTO);
             var principal = _mapper.Map<Principal>(addPrincipalDTO);
-            principal.AppUserId
+            principal.AppUserId = appUser.Id;
+            appUser.Principal = principal;
+            appUser.IsActive = true;
+
 
             var response = new Response<bool>()
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
                 Data = true,
-                Message = $"{manager.CompanyName} hotel with ID: {manager.AppUserId}: registered successfully"
+                Message = $" Principal {principal.FirstName} {principal.LastName} with ID: {principal.AppUserId}: created successfully"
             };
             return response;
         }

@@ -1,15 +1,6 @@
-﻿using hotel_booking_data.Contexts;
-using hotel_booking_data.Repositories.Abstractions;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
 using SSMA.Data.Context;
 using SSMA.Data.Repositories.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SSMA.Data.Repositories.Implementations
 {

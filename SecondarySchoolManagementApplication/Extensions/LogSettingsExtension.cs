@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Raven.Client.Documents;
+﻿using Raven.Client.Documents;
 using Serilog;
 using Serilog.Events;
 using SSMA.Utilities.Abstractions;

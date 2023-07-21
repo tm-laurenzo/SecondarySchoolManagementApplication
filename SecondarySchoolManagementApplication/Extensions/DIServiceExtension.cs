@@ -1,8 +1,3 @@
-
-
-using Microsoft.Extensions.DependencyInjection;
-
-
 namespace SecondarySchoolManagementApplication.Extensions
 {
     public static class DIServiceExtension
