@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SSMA.Data\SSMA.Data.csproj" />
     <ProjectReference Include="..\SSMA.DTOs\SSMA.DTOs.csproj" />
     <ProjectReference Include="..\SSMA.Models\SSMA.Models.csproj" />

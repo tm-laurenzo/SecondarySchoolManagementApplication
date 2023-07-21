@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using SSMA.Core.Abstractions;
 using SSMA.Data.UnitOfWork.Abstractions;
+using SSMA.DTOs;
+using SSMA.DTOs.PrincipalDTOs;
 using SSMA.Models.Models;
 using SSMA.Utilities.Abstractions;
 
@@ -19,6 +22,23 @@ namespace SSMA.Core.Implementations
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _logger = logger;
+        }
+        //There can only be one principal at any given time in a school
+        public async Task<Response<bool>> AddPrincipal(AddPrincipalDTO addPrincipalDTO)
+        {
+
+            var appUser = _mapper.Map<AppUser>(addPrincipalDTO);
+            var principal = _mapper.Map<Principal>(addPrincipalDTO);
+            principal.AppUserId
+
+            var response = new Response<bool>()
+            {
+                StatusCode = StatusCodes.Status200OK,
+                Succeeded = true,
+                Data = true,
+                Message = $"{manager.CompanyName} hotel with ID: {manager.AppUserId}: registered successfully"
+            };
+            return response;
         }
     }
 }
