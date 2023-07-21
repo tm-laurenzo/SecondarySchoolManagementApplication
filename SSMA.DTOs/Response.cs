@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace hotel_booking_dto
+namespace SSMA.DTOs
 {
     public class Response<T>
     {
@@ -9,7 +9,7 @@ namespace hotel_booking_dto
         public string Message { get; set; }
         public int StatusCode { get; set; }
 
-        public Response(int statusCode,bool success,string msg, T data)
+        public Response(int statusCode, bool success, string msg, T data)
         {
             Data = data;
             Succeeded = success;
@@ -29,10 +29,10 @@ namespace hotel_booking_dto
         {
             return new Response<T> { Succeeded = false, Message = errorMessage, StatusCode = statusCode };
         }
-        public static Response<T> Success(string successMessage,T data, int statusCode = 200)
+        public static Response<T> Success(string successMessage, T data, int statusCode = 200)
         {
-            return new Response<T> { Succeeded = true, Message = successMessage, Data = data, StatusCode = statusCode};
+            return new Response<T> { Succeeded = true, Message = successMessage, Data = data, StatusCode = statusCode };
         }
-        public override string ToString() => JsonConvert.SerializeObject(this);       
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }
