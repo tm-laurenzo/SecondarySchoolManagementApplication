@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SSMA.Core.Abstractions;
 using SSMA.DTOs.PrincipalDTOs;
+using SSMA.Utilities.Abstractions;
 
 namespace SecondarySchoolManagementApplication.Controllers
 {
@@ -9,15 +10,17 @@ namespace SecondarySchoolManagementApplication.Controllers
     public class PrincipalController : ControllerBase
     {
         private readonly IPrincipalService _principalService;
-        private readonly ILogger _logger;
-        public PrincipalController(ILogger logger, IPrincipalService principalService)
+        private readonly ILoggerManager _logger;
+
+
+        public PrincipalController(ILoggerManager logger, IPrincipalService principalService)
         {
             _principalService = principalService;
             _logger = logger;
         }
 
         [HttpPost]
-        [Route("AddPrincipa")]
+        [Route("AddPrincipal")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
