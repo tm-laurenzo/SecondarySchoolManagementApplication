@@ -1,11 +1,13 @@
-﻿using SSMA.Models.Enums;
+﻿using SSMA.Models.Base;
+using SSMA.Models.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SSMA.Models.Models
 {
-    public class Staff : AppUser
+    public class Staff : BaseGuidEntity
     {
-        [Key]
+        [ForeignKey("AppUser")]
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
         public string BusinessEmail { get; set; }

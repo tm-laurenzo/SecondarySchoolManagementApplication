@@ -41,7 +41,7 @@ namespace SSMA.Core.Implementations
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
                 Data = true,
-                Message = $" Principal {principal.FirstName} {principal.LastName} with ID: {principal.AppUserId}: created successfully"
+                Message = $" Principal {principal.AppUser.FirstName} {principal.AppUser.FirstName} with ID: : created successfully"
             };
             return response;
         }

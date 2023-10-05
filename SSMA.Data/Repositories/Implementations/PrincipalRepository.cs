@@ -17,7 +17,7 @@ namespace SSMA.Data.Repositories.Implementations
 
         public async Task<Principal?> GetPrincipalAsync(string principalId)
         {
-            var principal = await _dbSet.Where(x => x.Id == principalId).FirstOrDefaultAsync();
+            var principal = await _dbSet.Where(x => x.AppUserId == principalId).FirstOrDefaultAsync();
             return principal;
         }
 

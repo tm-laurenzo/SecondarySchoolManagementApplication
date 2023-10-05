@@ -20,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Register Dependency Injection Service Extension
 builder.Services.AddDependencyInjection();
+builder.Services.ConfigureIdentity();
 
 var app = builder.Build();
 

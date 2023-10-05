@@ -25,7 +25,7 @@ namespace SecondarySchoolManagementApplication.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddManager([FromBody] AddPrincipalDTO principalDto)
+        public async Task<IActionResult> AddPrincipal([FromBody] AddPrincipalDTO principalDto)
         {
             var result = await _principalService.AddPrincipal(principalDto);
             return StatusCode(result.StatusCode, result);
