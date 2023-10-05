@@ -18,6 +18,8 @@ builder.Services.AddAutoMapper(typeof(MappingsProfile).Assembly);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Register Dependency Injection Service Extension
+builder.Services.AddDependencyInjection();
 
 var app = builder.Build();
 
