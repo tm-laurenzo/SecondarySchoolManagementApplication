@@ -9,6 +9,7 @@ namespace hotel_booking_data.UnitOfWork.Implementation
     {
         private readonly SsmaDbContext _context;
         private IPrincipalRepository _principal;
+        private IStaffRepository _staff;
 
         public UnitOfWork(SsmaDbContext context)
         {
@@ -16,6 +17,7 @@ namespace hotel_booking_data.UnitOfWork.Implementation
         }
 
         public IPrincipalRepository Principals => _principal ??= new PrincipalRepository(_context);
+        public IStaffRepository Staff => _staff ??= new StaffRepository(_context);
 
 
         public async Task Save()

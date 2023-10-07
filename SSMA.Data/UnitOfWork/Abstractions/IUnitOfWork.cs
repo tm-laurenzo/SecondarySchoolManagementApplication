@@ -5,5 +5,6 @@ namespace SSMA.Data.UnitOfWork.Abstractions
     public interface IUnitOfWork : IDisposable
     {
         IPrincipalRepository Principals { get; }
+        IStaffRepository Staff { get; }
     }
 }

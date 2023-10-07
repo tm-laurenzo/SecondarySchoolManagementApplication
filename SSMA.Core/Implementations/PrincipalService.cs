@@ -40,10 +40,11 @@ namespace SSMA.Core.Implementations
             principal.Staff = staff;
             principal.Staff.AppUserId = appUser.Id;
             principal.Staff.AppUser = appUser;
-            //appUser.Principal = principal;
+
             appUser.IsActive = true;
             appUser.EmailConfirmed = true;
             var result = await _userManager.CreateAsync(appUser);
+
 
             var response = new Response<bool>()
             {
