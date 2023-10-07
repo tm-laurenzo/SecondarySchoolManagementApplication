@@ -31,17 +31,26 @@ namespace SSMA.Core.Implementations
 
             var appUser = _mapper.Map<AppUser>(addPrincipalDTO);
             var principal = _mapper.Map<Principal>(addPrincipalDTO);
-            principal.AppUserId = appUser.Id;
-            appUser.Principal = principal;
+            Staff staff = new Staff
+            {
+                AppUserId = appUser.Id,
+                AppUser = appUser,
+                Principal = principal
+            };
+            principal.Staff = staff;
+            principal.Staff.AppUserId = appUser.Id;
+            principal.Staff.AppUser = appUser;
+            //appUser.Principal = principal;
             appUser.IsActive = true;
             appUser.EmailConfirmed = true;
+            var result = await _userManager.CreateAsync(appUser);
 
             var response = new Response<bool>()
             {
                 StatusCode = StatusCodes.Status200OK,
                 Succeeded = true,
                 Data = true,
-                Message = $" Principal {principal.AppUser.FirstName} {principal.AppUser.FirstName} with ID: : created successfully"
+                Message = $" Principal {principal.Staff.AppUser.FirstName} {principal.Staff.AppUser.FirstName} with ID: : created successfully"
             };
             return response;
         }

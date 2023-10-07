@@ -209,42 +209,18 @@ namespace SSMA.Data.Migrations
                 name: "Staffs",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     AppUserId = table.Column<string>(type: "text", nullable: false),
                     BusinessEmail = table.Column<string>(type: "text", nullable: false),
                     BusinessPhone = table.Column<string>(type: "text", nullable: false),
                     ManagerialTypeOfStaff = table.Column<int>(type: "integer", nullable: false),
                     AcademiceTypeOfStaff = table.Column<int>(type: "integer", nullable: false),
-                    Discriminator = table.Column<string>(type: "text", nullable: false),
-                    VicePrincipalType = table.Column<int>(type: "integer", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
-                    DeletedBy = table.Column<string>(type: "text", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DateUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Discriminator = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Staffs", x => x.Id);
+                    table.PrimaryKey("PK_Staffs", x => x.AppUserId);
                     table.ForeignKey(
                         name: "FK_Staffs_AspNetUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Staffs_AspNetUsers_AppUserId1",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Staffs_AspNetUsers_AppUserId2",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Staffs_AspNetUsers_AppUserId3",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -292,7 +268,7 @@ namespace SSMA.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     NameOfDepartment = table.Column<string>(type: "text", nullable: false),
-                    HeadOfDeparmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    HeadOfDeparmentAppUserId = table.Column<string>(type: "text", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     DeletedBy = table.Column<string>(type: "text", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -302,10 +278,66 @@ namespace SSMA.Data.Migrations
                 {
                     table.PrimaryKey("PK_Departments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Departments_Staffs_HeadOfDeparmentId",
-                        column: x => x.HeadOfDeparmentId,
+                        name: "FK_Departments_Staffs_HeadOfDeparmentAppUserId",
+                        column: x => x.HeadOfDeparmentAppUserId,
                         principalTable: "Staffs",
-                        principalColumn: "Id",
+                        principalColumn: "AppUserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Principals",
+                columns: table => new
+                {
+                    StaffId = table.Column<string>(type: "text", nullable: false),
+                    ManagerialTypeOfStaff = table.Column<int>(type: "integer", nullable: false),
+                    AcademiceTypeOfStaff = table.Column<int>(type: "integer", nullable: false),
+                    PostionStartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    PostionEndtDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Principals", x => x.StaffId);
+                    table.ForeignKey(
+                        name: "FK_Principals_Staffs_StaffId",
+                        column: x => x.StaffId,
+                        principalTable: "Staffs",
+                        principalColumn: "AppUserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teachers",
+                columns: table => new
+                {
+                    StaffId = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teachers", x => x.StaffId);
+                    table.ForeignKey(
+                        name: "FK_Teachers_Staffs_StaffId",
+                        column: x => x.StaffId,
+                        principalTable: "Staffs",
+                        principalColumn: "AppUserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VicePrincipals",
+                columns: table => new
+                {
+                    StaffId = table.Column<string>(type: "text", nullable: false),
+                    VicePrincipalType = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VicePrincipals", x => x.StaffId);
+                    table.ForeignKey(
+                        name: "FK_VicePrincipals_Staffs_StaffId",
+                        column: x => x.StaffId,
+                        principalTable: "Staffs",
+                        principalColumn: "AppUserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -318,7 +350,7 @@ namespace SSMA.Data.Migrations
                     DepartmentId = table.Column<Guid>(type: "uuid", nullable: false),
                     Discriminator = table.Column<string>(type: "text", nullable: false),
                     ExamId = table.Column<Guid>(type: "uuid", nullable: true),
-                    TeacherId = table.Column<Guid>(type: "uuid", nullable: true),
+                    TeacherStaffId = table.Column<string>(type: "text", nullable: true),
                     Term = table.Column<int>(type: "integer", nullable: true),
                     StudentId = table.Column<Guid>(type: "uuid", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
@@ -342,16 +374,16 @@ namespace SSMA.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SubjectName_Staffs_TeacherId",
-                        column: x => x.TeacherId,
-                        principalTable: "Staffs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_SubjectName_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SubjectName_Teachers_TeacherStaffId",
+                        column: x => x.TeacherStaffId,
+                        principalTable: "Teachers",
+                        principalColumn: "StaffId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -443,30 +475,9 @@ namespace SSMA.Data.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departments_HeadOfDeparmentId",
+                name: "IX_Departments_HeadOfDeparmentAppUserId",
                 table: "Departments",
-                column: "HeadOfDeparmentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Staffs_AppUserId",
-                table: "Staffs",
-                column: "AppUserId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Staffs_AppUserId1",
-                table: "Staffs",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Staffs_AppUserId2",
-                table: "Staffs",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Staffs_AppUserId3",
-                table: "Staffs",
-                column: "AppUserId");
+                column: "HeadOfDeparmentAppUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_AppUserId",
@@ -499,9 +510,9 @@ namespace SSMA.Data.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubjectName_TeacherId",
+                name: "IX_SubjectName_TeacherStaffId",
                 table: "SubjectName",
-                column: "TeacherId");
+                column: "TeacherStaffId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tests_SubjectId",
@@ -530,7 +541,13 @@ namespace SSMA.Data.Migrations
                 name: "Assignments");
 
             migrationBuilder.DropTable(
+                name: "Principals");
+
+            migrationBuilder.DropTable(
                 name: "Tests");
+
+            migrationBuilder.DropTable(
+                name: "VicePrincipals");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -548,10 +565,13 @@ namespace SSMA.Data.Migrations
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Staffs");
+                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "Classes");
+
+            migrationBuilder.DropTable(
+                name: "Staffs");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

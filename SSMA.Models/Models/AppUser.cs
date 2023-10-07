@@ -22,7 +22,7 @@ namespace SSMA.Models.Models
         public bool IsSoftDeleted { get; set; }
         public string? PublicId { get; set; }
         public string? Avatar { get; set; }
-        public Principal Principal { get; set; }
+        public Staff Staff { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public DateTime PostionStartDate { get; set; }

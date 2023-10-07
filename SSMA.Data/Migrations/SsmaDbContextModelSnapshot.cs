@@ -350,8 +350,9 @@ namespace SSMA.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("HeadOfDeparmentId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("HeadOfDeparmentAppUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -362,7 +363,7 @@ namespace SSMA.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HeadOfDeparmentId");
+                    b.HasIndex("HeadOfDeparmentAppUserId");
 
                     b.ToTable("Departments");
                 });
@@ -397,18 +398,35 @@ namespace SSMA.Data.Migrations
                     b.ToTable("Exams");
                 });
 
-            modelBuilder.Entity("SSMA.Models.Models.Staff", b =>
+            modelBuilder.Entity("SSMA.Models.Models.Principal", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                    b.Property<string>("StaffId")
+                        .HasColumnType("text");
 
                     b.Property<int>("AcademiceTypeOfStaff")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ManagerialTypeOfStaff")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("PostionEndtDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("PostionStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("StaffId");
+
+                    b.ToTable("Principals");
+                });
+
+            modelBuilder.Entity("SSMA.Models.Models.Staff", b =>
+                {
                     b.Property<string>("AppUserId")
-                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("AcademiceTypeOfStaff")
+                        .HasColumnType("integer");
 
                     b.Property<string>("BusinessEmail")
                         .IsRequired()
@@ -418,27 +436,14 @@ namespace SSMA.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateUpdated")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("DeletedBy")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("ManagerialTypeOfStaff")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                    b.HasKey("AppUserId");
 
                     b.ToTable("Staffs");
 
@@ -524,6 +529,16 @@ namespace SSMA.Data.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("SubjectName");
                 });
 
+            modelBuilder.Entity("SSMA.Models.Models.Teacher", b =>
+                {
+                    b.Property<string>("StaffId")
+                        .HasColumnType("text");
+
+                    b.HasKey("StaffId");
+
+                    b.ToTable("Teachers");
+                });
+
             modelBuilder.Entity("SSMA.Models.Models.Test", b =>
                 {
                     b.Property<Guid>("Id")
@@ -559,6 +574,19 @@ namespace SSMA.Data.Migrations
                     b.ToTable("Tests");
                 });
 
+            modelBuilder.Entity("SSMA.Models.Models.VicePrincipal", b =>
+                {
+                    b.Property<string>("StaffId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("VicePrincipalType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("StaffId");
+
+                    b.ToTable("VicePrincipals");
+                });
+
             modelBuilder.Entity("SSMA.Models.Models.Gaurdian", b =>
                 {
                     b.HasBaseType("SSMA.Models.Models.AppUser");
@@ -574,20 +602,7 @@ namespace SSMA.Data.Migrations
                 {
                     b.HasBaseType("SSMA.Models.Models.Staff");
 
-                    b.HasIndex("AppUserId")
-                        .HasDatabaseName("IX_Staffs_AppUserId1");
-
                     b.HasDiscriminator().HasValue("HeadOfDeparment");
-                });
-
-            modelBuilder.Entity("SSMA.Models.Models.Principal", b =>
-                {
-                    b.HasBaseType("SSMA.Models.Models.Staff");
-
-                    b.HasIndex("AppUserId")
-                        .IsUnique();
-
-                    b.HasDiscriminator().HasValue("Principal");
                 });
 
             modelBuilder.Entity("SSMA.Models.Models.Subject", b =>
@@ -600,8 +615,9 @@ namespace SSMA.Data.Migrations
                     b.Property<Guid?>("StudentId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("TeacherId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("TeacherStaffId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("Term")
                         .HasColumnType("integer");
@@ -610,32 +626,9 @@ namespace SSMA.Data.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeacherStaffId");
 
                     b.HasDiscriminator().HasValue("Subject");
-                });
-
-            modelBuilder.Entity("SSMA.Models.Models.Teacher", b =>
-                {
-                    b.HasBaseType("SSMA.Models.Models.Staff");
-
-                    b.HasIndex("AppUserId")
-                        .HasDatabaseName("IX_Staffs_AppUserId2");
-
-                    b.HasDiscriminator().HasValue("Teacher");
-                });
-
-            modelBuilder.Entity("SSMA.Models.Models.VicePrincipal", b =>
-                {
-                    b.HasBaseType("SSMA.Models.Models.Staff");
-
-                    b.Property<int>("VicePrincipalType")
-                        .HasColumnType("integer");
-
-                    b.HasIndex("AppUserId")
-                        .HasDatabaseName("IX_Staffs_AppUserId3");
-
-                    b.HasDiscriminator().HasValue("VicePrincipal");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -700,11 +693,33 @@ namespace SSMA.Data.Migrations
                 {
                     b.HasOne("SSMA.Models.Models.HeadOfDeparment", "HeadOfDeparment")
                         .WithMany()
-                        .HasForeignKey("HeadOfDeparmentId")
+                        .HasForeignKey("HeadOfDeparmentAppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("HeadOfDeparment");
+                });
+
+            modelBuilder.Entity("SSMA.Models.Models.Principal", b =>
+                {
+                    b.HasOne("SSMA.Models.Models.Staff", "Staff")
+                        .WithOne("Principal")
+                        .HasForeignKey("SSMA.Models.Models.Principal", "StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Staff");
+                });
+
+            modelBuilder.Entity("SSMA.Models.Models.Staff", b =>
+                {
+                    b.HasOne("SSMA.Models.Models.AppUser", "AppUser")
+                        .WithOne("Staff")
+                        .HasForeignKey("SSMA.Models.Models.Staff", "AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("SSMA.Models.Models.Student", b =>
@@ -741,6 +756,17 @@ namespace SSMA.Data.Migrations
                     b.Navigation("Department");
                 });
 
+            modelBuilder.Entity("SSMA.Models.Models.Teacher", b =>
+                {
+                    b.HasOne("SSMA.Models.Models.Staff", "Staff")
+                        .WithOne("Teacher")
+                        .HasForeignKey("SSMA.Models.Models.Teacher", "StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Staff");
+                });
+
             modelBuilder.Entity("SSMA.Models.Models.Test", b =>
                 {
                     b.HasOne("SSMA.Models.Models.Subject", null)
@@ -748,27 +774,15 @@ namespace SSMA.Data.Migrations
                         .HasForeignKey("SubjectId");
                 });
 
-            modelBuilder.Entity("SSMA.Models.Models.HeadOfDeparment", b =>
+            modelBuilder.Entity("SSMA.Models.Models.VicePrincipal", b =>
                 {
-                    b.HasOne("SSMA.Models.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Staffs_AspNetUsers_AppUserId1");
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("SSMA.Models.Models.Principal", b =>
-                {
-                    b.HasOne("SSMA.Models.Models.AppUser", "AppUser")
-                        .WithOne("Principal")
-                        .HasForeignKey("SSMA.Models.Models.Principal", "AppUserId")
+                    b.HasOne("SSMA.Models.Models.Staff", "Staff")
+                        .WithOne("VicePrincipal")
+                        .HasForeignKey("SSMA.Models.Models.VicePrincipal", "StaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppUser");
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("SSMA.Models.Models.Subject", b =>
@@ -785,7 +799,7 @@ namespace SSMA.Data.Migrations
 
                     b.HasOne("SSMA.Models.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherId")
+                        .HasForeignKey("TeacherStaffId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -794,39 +808,27 @@ namespace SSMA.Data.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("SSMA.Models.Models.Teacher", b =>
-                {
-                    b.HasOne("SSMA.Models.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Staffs_AspNetUsers_AppUserId2");
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("SSMA.Models.Models.VicePrincipal", b =>
-                {
-                    b.HasOne("SSMA.Models.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Staffs_AspNetUsers_AppUserId3");
-
-                    b.Navigation("AppUser");
-                });
-
             modelBuilder.Entity("SSMA.Models.Models.AppUser", b =>
                 {
-                    b.Navigation("Principal")
+                    b.Navigation("Staff")
                         .IsRequired();
                 });
 
             modelBuilder.Entity("SSMA.Models.Models.Department", b =>
                 {
                     b.Navigation("Subjects");
+                });
+
+            modelBuilder.Entity("SSMA.Models.Models.Staff", b =>
+                {
+                    b.Navigation("Principal")
+                        .IsRequired();
+
+                    b.Navigation("Teacher")
+                        .IsRequired();
+
+                    b.Navigation("VicePrincipal")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SSMA.Models.Models.Student", b =>

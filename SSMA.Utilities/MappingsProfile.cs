@@ -9,6 +9,7 @@ namespace SSMA.Utilities
         public MappingsProfile()
         {
             CreateMap<Principal, AddPrincipalDTO>().ReverseMap();
+
             CreateMap<Principal, UpdatePrincipalDTO>().ReverseMap();
 
             CreateMap<AppUser, AddPrincipalDTO>()
@@ -16,6 +17,8 @@ namespace SSMA.Utilities
                 .ForMember(principal => principal.Username, u => u.MapFrom(user => user.UserName))
                 .ForMember(principal => principal.BusinessPhone, u => u.MapFrom(user => user.PhoneNumber))
                 .ReverseMap();
+
+
         }
     }
 }
