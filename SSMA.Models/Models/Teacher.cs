@@ -6,7 +6,7 @@ namespace SSMA.Models.Models
     public class Teacher
     {
         [Key]
-        public String StaffId { get; set; }
+        public string StaffId { get; set; }
         public Staff Staff { get; set; }
         public ManagerialTypeOfStaff ManagerialTypeOfStaff { get; } = ManagerialTypeOfStaff.Managerial;
         public AcademiceTypeOfStaff AcademiceTypeOfStaff { get; } = AcademiceTypeOfStaff.Academic;

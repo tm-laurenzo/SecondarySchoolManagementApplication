@@ -6,5 +6,6 @@ namespace SSMA.Data.UnitOfWork.Abstractions
     {
         IPrincipalRepository Principals { get; }
         IStaffRepository Staff { get; }
+        public Task Save();
     }
 }

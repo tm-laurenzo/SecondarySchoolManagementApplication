@@ -35,7 +35,10 @@ namespace SSMA.Core.Implementations
             {
                 AppUserId = appUser.Id,
                 AppUser = appUser,
-                Principal = principal
+                Principal = principal,
+                Email = addPrincipalDTO.Email,
+                Phone = addPrincipalDTO.Phone
+
             };
             principal.Staff = staff;
             principal.Staff.AppUserId = appUser.Id;
@@ -44,6 +47,9 @@ namespace SSMA.Core.Implementations
             appUser.IsActive = true;
             appUser.EmailConfirmed = true;
             var result = await _userManager.CreateAsync(appUser);
+            var saveStaffResult = await _unitOfWork.Staff.AddStaff(staff);
+            var savePrincipal = await _unitOfWork.Principals.AddPrincipal(principal);
+            await _unitOfWork.Save();
 
 
             var response = new Response<bool>()

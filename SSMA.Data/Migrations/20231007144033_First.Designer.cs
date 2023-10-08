@@ -12,7 +12,7 @@ using SSMA.Data.Context;
 namespace SSMA.Data.Migrations
 {
     [DbContext(typeof(SsmaDbContext))]
-    [Migration("20231007134931_First")]
+    [Migration("20231007144033_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -430,20 +430,20 @@ namespace SSMA.Data.Migrations
                     b.Property<int>("AcademiceTypeOfStaff")
                         .HasColumnType("integer");
 
-                    b.Property<string>("BusinessEmail")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("BusinessPhone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ManagerialTypeOfStaff")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("AppUserId");
 

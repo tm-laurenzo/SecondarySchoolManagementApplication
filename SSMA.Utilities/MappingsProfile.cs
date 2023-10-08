@@ -13,9 +13,9 @@ namespace SSMA.Utilities
             CreateMap<Principal, UpdatePrincipalDTO>().ReverseMap();
 
             CreateMap<AppUser, AddPrincipalDTO>()
-                .ForMember(principal => principal.BusinessEmail, u => u.MapFrom(user => user.Email))
+                .ForMember(principal => principal.Email, u => u.MapFrom(user => user.Email))
                 .ForMember(principal => principal.Username, u => u.MapFrom(user => user.UserName))
-                .ForMember(principal => principal.BusinessPhone, u => u.MapFrom(user => user.PhoneNumber))
+                .ForMember(principal => principal.Phone, u => u.MapFrom(user => user.PhoneNumber))
                 .ReverseMap();
 
 

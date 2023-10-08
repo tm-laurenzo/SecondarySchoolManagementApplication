@@ -5,9 +5,9 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
-        public string BusinessPhone { get; set; }
+        public string Phone { get; set; }
         public string Username { get; set; }
-        public string BusinessEmail { get; set; }
+        public string Email { get; set; }
         public int Age { get; set; }
         public string? PublicId { get; set; }
         public string? Avatar { get; set; }

@@ -10,8 +10,8 @@ namespace SSMA.Models.Models
         [Key]
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
-        public string BusinessEmail { get; set; }
-        public string BusinessPhone { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
         public Teacher Teacher { get; set; }
         public Principal Principal { get; set; }
         public VicePrincipal VicePrincipal { get; set; }

@@ -428,20 +428,20 @@ namespace SSMA.Data.Migrations
                     b.Property<int>("AcademiceTypeOfStaff")
                         .HasColumnType("integer");
 
-                    b.Property<string>("BusinessEmail")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("BusinessPhone")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ManagerialTypeOfStaff")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("AppUserId");
 

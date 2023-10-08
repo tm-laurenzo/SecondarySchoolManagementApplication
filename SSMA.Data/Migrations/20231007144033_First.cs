@@ -210,8 +210,8 @@ namespace SSMA.Data.Migrations
                 columns: table => new
                 {
                     AppUserId = table.Column<string>(type: "text", nullable: false),
-                    BusinessEmail = table.Column<string>(type: "text", nullable: false),
-                    BusinessPhone = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Phone = table.Column<string>(type: "text", nullable: false),
                     ManagerialTypeOfStaff = table.Column<int>(type: "integer", nullable: false),
                     AcademiceTypeOfStaff = table.Column<int>(type: "integer", nullable: false),
                     Discriminator = table.Column<string>(type: "text", nullable: false)
