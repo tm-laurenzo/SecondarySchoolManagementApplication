@@ -7,6 +7,8 @@ using SSMA.DTOs;
 using SSMA.DTOs.PrincipalDTOs;
 using SSMA.Models.Models;
 using SSMA.Utilities.Abstractions;
+using System.Net;
+using System.Transactions;
 
 namespace SSMA.Core.Implementations
 {
@@ -26,11 +28,20 @@ namespace SSMA.Core.Implementations
 
 
         //There can only be one principal at any given time in a school
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="addPrincipalDTO"></param>
+        /// <returns></returns>
         public async Task<Response<bool>> AddPrincipal(AddPrincipalDTO addPrincipalDTO)
         {
-
+            //Create AppUser
             var appUser = _mapper.Map<AppUser>(addPrincipalDTO);
+
+            //Create Principal
             var principal = _mapper.Map<Principal>(addPrincipalDTO);
+
+            //Create Staff
             Staff staff = new Staff
             {
                 AppUserId = appUser.Id,
@@ -41,8 +52,7 @@ namespace SSMA.Core.Implementations
 
             };
             principal.Staff = staff;
-            principal.Staff.AppUserId = appUser.Id;
-            principal.Staff.AppUser = appUser;
+
 
             appUser.IsActive = true;
             appUser.EmailConfirmed = true;
@@ -61,5 +71,64 @@ namespace SSMA.Core.Implementations
             };
             return response;
         }
+
+        public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)
+        {
+            var response = new Response<string>();
+            var principal = await _unitOfWork.Principals.GetPrincipalAsync(principalId);
+
+
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                if (principal != null)
+                {
+                    // Update user details in AspNetAppUser table
+                    var user = await _userManager.FindByIdAsync(principalId);
+                    var userUpdateResult = await UpdateUser(user, updatePrincipalDTO);
+
+                    if (userUpdateResult.Succeeded)
+                    {
+                        //Update the staff
+                        var staff = principal.Staff;
+                        // update the principal
+                        await _unitOfWork.Save();
+
+                        response.Message = "Update Successful";
+                        response.StatusCode = (int)HttpStatusCode.OK;
+                        response.Succeeded = true;
+                        response.Data = principalId;
+                        transaction.Complete();
+                        return response;
+                    }
+
+                    transaction.Dispose();
+                    response.Message = "Something went wrong, when updating the AppUser table. Please try again later";
+                    response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    response.Succeeded = false;
+                    return response;
+                }
+                response.Message = "Customer Not Found";
+                response.StatusCode = (int)HttpStatusCode.BadRequest;
+                response.Succeeded = false;
+                transaction.Complete();
+                return response;
+            }
+        }
+
+        private async Task<IdentityResult> UpdateUser(AppUser user, UpdatePrincipalDTO model)
+        {
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.PhoneNumber = model.Phone;
+            user.Age = model.Age;
+
+            return await _userManager.UpdateAsync(user);
+        }
+        public async Task<Response<bool>> GetPrincipalById(string principalId)
+        {
+            return false;
+        }
+
+
     }
 }
