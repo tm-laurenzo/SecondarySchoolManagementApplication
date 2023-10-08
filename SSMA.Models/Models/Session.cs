@@ -1,5 +1,4 @@
 ﻿using SSMA.Models.Base;
-using SSMA.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SSMA.Models.Models
 {
-    public class Term : BaseGuidEntity
+    public class Session : BaseGuidEntity
     {
-        public Session Session { get; set; }
-        public TermNumber TermNumber { get; set; }
+        public int StartYear { get; set; }
+        public int EndYear { get; set; }
     }
 }
