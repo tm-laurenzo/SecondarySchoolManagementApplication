@@ -37,9 +37,9 @@ namespace SecondarySchoolManagementApplication.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdatePrincipal([FromBody] UpdatePrincipalDTO updatePrincipalDto)
+        public async Task<IActionResult> UpdatePrincipal([FromBody] UpdatePrincipalDTO updatePrincipalDto, string principalId)
         {
-            var result = await _principalService.updatePrincipal(updatePrincipalDto);
+            var result = await _principalService.UpdatePrincipal(principalId, updatePrincipalDto);
             return StatusCode(result.StatusCode, result);
         }
     }
