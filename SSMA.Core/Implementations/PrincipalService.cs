@@ -124,10 +124,7 @@ namespace SSMA.Core.Implementations
 
             return await _userManager.UpdateAsync(user);
         }
-        public async Task<Response<bool>> GetPrincipalById(string principalId)
-        {
-            return false;
-        }
+       
 
 
     }
