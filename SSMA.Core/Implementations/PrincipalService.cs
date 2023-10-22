@@ -74,6 +74,7 @@ namespace SSMA.Core.Implementations
 
         public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)
         {
+            // TODO: wrap this in try-catch block
             var response = new Response<string>();
             var principal = await _unitOfWork.Principals.GetPrincipalAsync(principalId);
 
