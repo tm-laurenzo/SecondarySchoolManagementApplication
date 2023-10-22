@@ -36,6 +36,7 @@ namespace SSMA.Core.Implementations
         public async Task<Response<bool>> AddPrincipal(AddPrincipalDTO addPrincipalDTO)
         {
             bool savePrincipal = false;
+            var response = new Response<bool>();
             //Create AppUser
             var appUser = _mapper.Map<AppUser>(addPrincipalDTO);
 
@@ -75,7 +76,7 @@ namespace SSMA.Core.Implementations
           
           
             if(savePrincipal) {
-                var response = new Response<bool>()
+                 response = new Response<bool>()
                 {
                     StatusCode = StatusCodes.Status200OK,
                     Succeeded = true,
@@ -84,10 +85,20 @@ namespace SSMA.Core.Implementations
                 };
                 return response;
             }
-            //TODO convert to proper response
-            return null;
-          
+            //TODO convert to proper response: Done
+
+             response = new Response<bool>()
+            {
+                StatusCode = StatusCodes.Status500InternalServerError,
+                Succeeded = false,
+                Data = true,
+                Message = $" Principal was not created"
+            };
+            return response;
         }
+           
+          
+        
 
         public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)
         {
