@@ -53,9 +53,9 @@ namespace SSMA.Core.Implementations
 
             };
             principal.Staff = staff;
-            //1 add appuser
-            //2 if 1 is successful add staff
-            //3 if 2 is successful add principal
+            //1 add appuser : DONE
+            //2 if 1 is successful add staff : DONE
+            //3 if 2 is successful add principal : DONE
 
 
             appUser.IsActive = true;
