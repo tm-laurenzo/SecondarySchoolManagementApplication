@@ -72,11 +72,12 @@ namespace SSMA.Core.Implementations
                     await _unitOfWork.Save();
                 }
             }
-           
-          
-          
-            if(savePrincipal) {
-                 response = new Response<bool>()
+
+
+
+            if (savePrincipal)
+            {
+                response = new Response<bool>()
                 {
                     StatusCode = StatusCodes.Status200OK,
                     Succeeded = true,
@@ -85,9 +86,9 @@ namespace SSMA.Core.Implementations
                 };
                 return response;
             }
-            //TODO convert to proper response: Done
 
-             response = new Response<bool>()
+
+            response = new Response<bool>()
             {
                 StatusCode = StatusCodes.Status500InternalServerError,
                 Succeeded = false,
@@ -96,9 +97,9 @@ namespace SSMA.Core.Implementations
             };
             return response;
         }
-           
-          
-        
+
+
+
 
         public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)
         {
@@ -154,7 +155,7 @@ namespace SSMA.Core.Implementations
             user.Email = model.Email;
             return await _userManager.UpdateAsync(user);
         }
-       
+
 
 
     }
