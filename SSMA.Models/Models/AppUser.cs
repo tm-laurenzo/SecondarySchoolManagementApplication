@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace SSMA.Models.Models
 {
     public class AppUser : IdentityUser
     {
+        [Required]
+        public string Discriminator { get; set; } = "AppUser";
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Gender { get; set; }
