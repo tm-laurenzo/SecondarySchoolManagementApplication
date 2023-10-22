@@ -122,7 +122,7 @@ namespace SSMA.Core.Implementations
             user.LastName = model.LastName;
             user.PhoneNumber = model.Phone;
             user.Age = model.Age;
-
+            user.Email = model.Email;
             return await _userManager.UpdateAsync(user);
         }
        
