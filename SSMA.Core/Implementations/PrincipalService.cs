@@ -89,9 +89,9 @@ namespace SSMA.Core.Implementations
 
                     if (userUpdateResult.Succeeded)
                     {
-                        //Update the staff
+                        //  TODO: Update the staff
                         var staff = principal.Staff;
-                        // update the principal
+                        // TODO: update the principal
                         await _unitOfWork.Save();
 
                         response.Message = "Update Successful";
