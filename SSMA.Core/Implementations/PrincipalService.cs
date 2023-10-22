@@ -67,7 +67,7 @@ namespace SSMA.Core.Implementations
                 var saveStaffResult = await _unitOfWork.Staff.AddStaff(staff);
                 if (saveStaffResult)
                 {
-                     savePrincipal = await _unitOfWork.Principals.AddPrincipal(principal);
+                    savePrincipal = await _unitOfWork.Principals.AddPrincipal(principal);
                     await _unitOfWork.Save();
                 }
             }
