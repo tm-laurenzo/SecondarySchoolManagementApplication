@@ -35,6 +35,7 @@ namespace SSMA.Core.Implementations
         /// <returns></returns>
         public async Task<Response<bool>> AddPrincipal(AddPrincipalDTO addPrincipalDTO)
         {
+            bool savePrincipal = false;
             //Create AppUser
             var appUser = _mapper.Map<AppUser>(addPrincipalDTO);
 
@@ -52,24 +53,40 @@ namespace SSMA.Core.Implementations
 
             };
             principal.Staff = staff;
+            //1 add appuser
+            //2 if 1 is successful add staff
+            //3 if 2 is successful add principal
 
 
             appUser.IsActive = true;
             appUser.EmailConfirmed = true;
             var result = await _userManager.CreateAsync(appUser);
-            var saveStaffResult = await _unitOfWork.Staff.AddStaff(staff);
-            var savePrincipal = await _unitOfWork.Principals.AddPrincipal(principal);
-            await _unitOfWork.Save();
 
-
-            var response = new Response<bool>()
+            if (result.Succeeded)
             {
-                StatusCode = StatusCodes.Status200OK,
-                Succeeded = true,
-                Data = true,
-                Message = $" Principal {principal.Staff.AppUser.FirstName} {principal.Staff.AppUser.FirstName} with ID: : created successfully"
-            };
-            return response;
+                var saveStaffResult = await _unitOfWork.Staff.AddStaff(staff);
+                if (saveStaffResult)
+                {
+                     savePrincipal = await _unitOfWork.Principals.AddPrincipal(principal);
+                    await _unitOfWork.Save();
+                }
+            }
+           
+          
+          
+            if(savePrincipal) {
+                var response = new Response<bool>()
+                {
+                    StatusCode = StatusCodes.Status200OK,
+                    Succeeded = true,
+                    Data = true,
+                    Message = $" Principal {principal.Staff.AppUser.FirstName} {principal.Staff.AppUser.FirstName} with ID: : created successfully"
+                };
+                return response;
+            }
+            //TODO convert to proper response
+            return null;
+          
         }
 
         public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)
