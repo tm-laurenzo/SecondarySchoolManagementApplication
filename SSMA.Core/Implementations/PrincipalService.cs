@@ -98,9 +98,6 @@ namespace SSMA.Core.Implementations
             return response;
         }
 
-
-
-
         public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)
         {
             // TODO: wrap this in try-catch block
