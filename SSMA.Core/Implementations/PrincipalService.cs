@@ -97,12 +97,26 @@ namespace SSMA.Core.Implementations
             };
             return response;
         }
-        
+
         public async Task<Response<UpdatePrincipalDTO>> GetPrincipal()
         {
-            var response = new Response<string>();
+            var response = new Response<UpdatePrincipalDTO>();
             var principal = await _unitOfWork.Principals.GetPrincipalAsync();
-            return null;
+
+            if (principal == null)
+            {
+                response.Data = null;
+            }
+            else
+            {
+                var staff = await await _unitOfWork.Staff.GetPrincipalAsync();
+                response.Message = "Principal Found";
+                response.StatusCode = 200;
+                response.Succeeded = true;
+                response.Data = _mapper.Map<UpdatePrincipalDTO>(principal);
+
+            }
+            return response;
         }
 
         public async Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO)

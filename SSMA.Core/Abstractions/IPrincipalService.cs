@@ -7,5 +7,6 @@ namespace SSMA.Core.Abstractions
     {
         Task<Response<bool>> AddPrincipal(AddPrincipalDTO addPrincipalDTO);
         Task<Response<string>> UpdatePrincipal(string principalId, UpdatePrincipalDTO updatePrincipalDTO);
+        Task<Response<UpdatePrincipalDTO>> GetPrincipal();
     }
 }

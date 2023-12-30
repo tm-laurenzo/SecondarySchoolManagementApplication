@@ -42,5 +42,17 @@ namespace SecondarySchoolManagementApplication.Controllers
             var result = await _principalService.UpdatePrincipal(principalId, updatePrincipalDto);
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpGet]
+        [Route("GetPrincipal")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetPrincipal()
+        {
+            var result = await _principalService.GetPrincipal();
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }
