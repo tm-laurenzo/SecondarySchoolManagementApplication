@@ -109,11 +109,12 @@ namespace SSMA.Core.Implementations
             }
             else
             {
-                var staff = await await _unitOfWork.Staff.GetPrincipalAsync();
                 response.Message = "Principal Found";
                 response.StatusCode = 200;
                 response.Succeeded = true;
-                response.Data = _mapper.Map<UpdatePrincipalDTO>(principal);
+                var principalResponse = _mapper.Map<UpdatePrincipalDTO>(principal.Staff.AppUser);
+                principalResponse.FirstName = principal.Staff.AppUser.FirstName;
+                response.Data = principalResponse;
 
             }
             return response;

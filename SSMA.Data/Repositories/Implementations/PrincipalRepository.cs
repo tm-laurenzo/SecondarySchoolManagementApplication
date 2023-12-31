@@ -28,10 +28,16 @@ namespace SSMA.Data.Repositories.Implementations
                                     && (x.Staff.AppUser.IsSoftDeleted == false)).FirstOrDefaultAsync();
             if (principal != null)
             {
-                principal.Staff = await _dbSetStaff.Where(x => x.AppUserId == principal. )
-            }
+                var appuser = await _context.Users.Where(x => x.Id == principal.StaffId).FirstOrDefaultAsync();
+                if (appuser == null)
+                {
+                    return principal;
+                }
 
+                principal.Staff = await _context.Staffs.Where(x => x.AppUserId == principal.StaffId).FirstOrDefaultAsync();
+            }
             return principal;
+
         }
 
         public async Task<bool> AddPrincipal(Principal principal)
