@@ -25,7 +25,7 @@ namespace SSMA.Data.Repositories.Implementations
         public async Task<Principal?> GetPrincipalAsync()
         {
             var principal = await _dbSetPrincipal.Where(x => x.Staff.AppUser.IsActive
-                                    && (x.Staff.AppUser.IsSoftDeleted == false)).FirstOrDefaultAsync();
+                                    && (!x.Staff.AppUser.IsSoftDeleted)).FirstOrDefaultAsync();
             if (principal != null)
             {
                 var appuser = await _context.Users.Where(x => x.Id == principal.StaffId).FirstOrDefaultAsync();
