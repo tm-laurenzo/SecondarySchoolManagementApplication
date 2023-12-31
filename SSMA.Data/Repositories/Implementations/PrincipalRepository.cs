@@ -17,7 +17,7 @@ namespace SSMA.Data.Repositories.Implementations
             _dbSetStaff = _context.Set<Staff>();
         }
 
-        public async Task<Principal?> GetPrincipalAsync(string principalId)
+        public async Task<Principal?> GetPrincipalByIdAsync(string principalId)
         {
             var principal = await _dbSetPrincipal.Where(x => x.Staff.AppUserId == principalId).FirstOrDefaultAsync();
             return principal;

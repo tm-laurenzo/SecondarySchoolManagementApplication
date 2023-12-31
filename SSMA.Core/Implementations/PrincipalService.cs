@@ -124,8 +124,7 @@ namespace SSMA.Core.Implementations
         {
             // TODO: wrap this in try-catch block
             var response = new Response<string>();
-            var principal = await _unitOfWork.Principals.GetPrincipalAsync(principalId);
-
+            var principal = await _unitOfWork.Principals.GetPrincipalByIdAsync(principalId);
 
             using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
