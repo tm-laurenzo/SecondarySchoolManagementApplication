@@ -45,6 +45,18 @@ namespace SSMA.Data.Repositories.Implementations
             await _dbSetPrincipal.AddAsync(principal);
             return true;
         }
+
+        public async Task<bool> HardDeletePrincipal()
+        {
+            return;
+        }
+
+        public async Task<bool> SoftDeletePrincipal()
+        {
+            return;
+        }
+
+
     }
 }
 
