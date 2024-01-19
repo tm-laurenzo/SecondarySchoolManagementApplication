@@ -174,6 +174,11 @@ namespace SSMA.Core.Implementations
             return await _userManager.UpdateAsync(user);
         }
 
+        private async Task<bool> HardDeletePrincipal(string principalId)
+        {
+            var principal = await _unitOfWork.Principals.GetPrincipalByIdAsync(principalId);
+            return;
+        }
 
 
     }
