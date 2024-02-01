@@ -57,7 +57,7 @@ namespace SecondarySchoolManagementApplication.Controllers
 
 
         [HttpGet]
-        [Route("GetPrincipal")]
+        [Route("HardDeletePrincipal")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -69,7 +69,7 @@ namespace SecondarySchoolManagementApplication.Controllers
 
 
         [HttpGet]
-        [Route("GetPrincipal")]
+        [Route("SoftDeletePrincipal")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
